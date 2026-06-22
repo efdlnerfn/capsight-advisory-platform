@@ -1,6 +1,6 @@
 # Sustainable Tomorrow Hackathon Project
 to us the AI listener feature
-write this in the terminal (make sure it is under the file directory)
+write this in the terminal (make sure it is under the capsight-advisory-platform directory)
 -------------------------------------------------------------------------
 Step one python -m venv .venv
 
