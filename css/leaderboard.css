@@ -1,0 +1,190 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.dropdown-panel {
+    transform-origin: top right;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.dropdown-panel[data-origin="left"] { transform-origin: top left; }
+.dropdown-panel.hidden-panel {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+    pointer-events: none;
+}
+.dropdown-panel.open-panel {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.icon-btn {
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.icon-btn:active { transform: scale(0.92); }
+
+.nav-tab {
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entrance {
+    animation: cardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.flash {
+    animation: flash 1s ease;
+}
+@keyframes flash {
+    0%   { background-color: rgba(37, 99, 235, 0.14); }
+    100% { background-color: transparent; }
+}
+
+.podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.podium-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid rgb(226 232 240);
+    border-radius: 18px;
+    padding: 30px 22px 22px;
+    width: 240px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.podium-card:hover { transform: translateY(-4px); }
+
+.podium-first {
+    transform: translateY(-22px);
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 20px 45px rgba(37, 99, 235, 0.20);
+}
+.podium-first:hover { transform: translateY(-26px); }
+
+.podium-empty {
+    background: transparent;
+    border: 1px dashed rgb(203 213 225);
+    box-shadow: none;
+    min-height: 200px;
+}
+
+.rank-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #2563eb, #1e3a5f);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+.podium-second .rank-badge { background: linear-gradient(135deg, #60a5fa, #1e3a5f); }
+.podium-third  .rank-badge { background: linear-gradient(135deg, #93c5fd, #1e3a5f); }
+
+.medal {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.podium-avatar {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    margin: 10px auto 12px;
+    border: 3px solid #eff6ff;
+    object-fit: cover;
+    display: block;
+}
+.podium-first .podium-avatar {
+    width: 88px;
+    height: 88px;
+    border-color: #dbeafe;
+}
+
+.podium-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: rgb(15 23 42);
+}
+
+.podium-role {
+    margin-top: 6px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+
+.podium-score { margin-top: 16px; }
+.score-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: #1d4ed8;
+    line-height: 1;
+}
+.score-unit {
+    font-size: 13px;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+.podium-bar {
+    margin-top: 12px;
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 999px;
+    overflow: hidden;
+}
+.podium-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    border-radius: 999px;
+    transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lb-grid {
+    display: grid;
+    grid-template-columns: 64px 1.6fr 1.2fr 1.5fr 160px;
+    align-items: center;
+    gap: 16px;
+}
+.lb-row {
+    padding: 14px 24px;
+    transition: background-color 0.15s ease;
+}
+.lb-row:hover { background-color: #f8fafc; }
+
+@media (max-width: 1024px) {
+    .lb-grid { grid-template-columns: 56px 1.6fr 1.2fr 150px; }
+}
+@media (max-width: 768px) {
+    .lb-grid { grid-template-columns: 48px 1.6fr 140px; }
+}
+@media (max-width: 520px) {
+    .lb-grid { grid-template-columns: 40px 1fr 110px; gap: 10px; }
+    .lb-row, .lb-grid-header { padding-left: 16px; padding-right: 16px; }
+}

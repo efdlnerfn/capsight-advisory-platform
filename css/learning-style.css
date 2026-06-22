@@ -1,0 +1,124 @@
+body { 
+    font-family: 'Inter', sans-serif; 
+}
+
+/* Smooth transitions for the progress bar */
+#progress-bar-fill {
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #2563eb !important;
+    position: relative;
+    overflow: hidden;
+}
+/* Modal animation */
+#course-modal {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-content {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.95);
+}
+
+#course-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#course-modal.active .modal-content {
+    transform: scale(1);
+}
+
+/* Toast notification animation */
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.toast-animate {
+    animation: slideUp 0.4s ease forwards;
+}
+
+/* Points progress ring */
+#points-ring {
+    transition: stroke-dashoffset 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dropdown panels (nav profile + bell) */
+.dropdown-panel {
+    transform-origin: top right;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.dropdown-panel[data-origin="left"] { transform-origin: top left; }
+.dropdown-panel.hidden-panel {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+    pointer-events: none;
+}
+.dropdown-panel.open-panel {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Tab panel switch */
+.tab-panel {
+    animation: panelIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes panelIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card entrance on load */
+.entrance {
+    animation: cardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Follow-up checklist */
+.followup-check i {
+    transition: opacity 0.15s ease;
+}
+.followup-text.is-done {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+/* Generic small pop for icon-only buttons */
+.icon-btn {
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.icon-btn:active {
+    transform: scale(0.92);
+}
+
+/* Nav tab transitions */
+.nav-tab {
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+#progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0) 0px,
+    rgba(255,255,255,0) 10px,
+    rgba(255,255,255,0.25) 10px,
+    rgba(255,255,255,0.25) 20px
+  );
+  background-size: 28px 28px;
+  animation: moveStripes 0.8s linear infinite;
+}
+
+@keyframes moveStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 28px 0; }
+}

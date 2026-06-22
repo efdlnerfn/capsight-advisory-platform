@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAG Advisory - CPD Learning Hub</title>
+
+    <link rel="icon" href="../CapslockLogo.png" type="png">
+
+  
+    <script src="https://cdn.tailwindcss.com"></script>
+
+   
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    
+    <link rel="stylesheet" href="../css/learning-style.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col relative">
+
+<nav class="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16 gap-3">
+
+      
+      <a href="../index.html" class="flex items-center gap-2 shrink-0 group z-10">
+        <img src="../CapslockLogo.png" alt="CapsLock logo" class="h-9 w-9 object-contain group-hover:scale-105 transition-transform">
+        <span class="text-base font-bold text-slate-900 tracking-tight" style="margin-left: -10px;">ap<span class="text-blue-600">Sight</span></span>
+      </a>
+
+      
+      <div class="hidden md:flex flex-1 justify-center">
+        <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
+          <a href="../index.html" class="app-nav-link app-nav-idle">
+            <i class="ph ph-house"></i><span>Home</span>
+          </a>
+          <a href="learning.html" class="app-nav-link app-nav-active">
+            <i class="ph ph-graduation-cap"></i><span>Learning</span>
+          </a>
+          <a href="leaderboard.html" class="app-nav-link app-nav-idle">
+            <i class="ph ph-users-three"></i><span>Referrals</span>
+          </a>
+          <a href="expenses.html" class="app-nav-link app-nav-idle">
+            <i class="ph ph-receipt"></i><span>Expenses</span>
+          </a>
+          <a href="ai-listener.html" class="app-nav-link app-nav-idle">
+            <i class="ph ph-ear-slash"></i><span>AI Listener</span>
+          </a>
+        </div>
+      </div>
+
+      
+      <div class="flex items-center gap-1 shrink-0 z-10">
+        <div class="relative">
+          <button id="bell-trigger" class="icon-btn relative w-10 h-10 rounded-lg flex items-center justify-center text-slate-500 hover:text-blue-600 hover:bg-blue-50">
+            <i class="ph ph-bell text-xl"></i>
+            <span id="bell-dot" class="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full ring-2 ring-white"></span>
+          </button>
+
+          <div id="bell-dropdown" class="dropdown-panel hidden-panel absolute top-full right-0 mt-2 w-80 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden z-50">
+            <div class="px-4 py-3 border-b border-slate-100 bg-slate-50 flex items-center justify-between">
+              <p class="text-sm font-bold text-slate-900">Notifications</p>
+              <span class="text-xs text-blue-600 font-medium">2 new</span>
+            </div>
+            <div class="max-h-72 overflow-y-auto divide-y divide-slate-100">
+              <div class="px-4 py-3 flex gap-3 hover:bg-slate-50 transition-colors">
+                <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100"><i class="ph ph-trophy text-sm"></i></div>
+                <div>
+                  <p class="text-sm text-slate-900 font-medium">Risk Management module unlocked</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Just now</p>
+                </div>
+              </div>
+              <div class="px-4 py-3 flex gap-3 hover:bg-slate-50 transition-colors">
+                <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100"><i class="ph ph-calendar-check text-sm"></i></div>
+                <div>
+                  <p class="text-sm text-slate-900 font-medium">Q3 Market Outlook starts tomorrow</p>
+                  <p class="text-xs text-slate-400 mt-0.5">3 hours ago</p>
+                </div>
+              </div>
+              <div class="px-4 py-3 flex gap-3 hover:bg-slate-50 transition-colors">
+                <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 border border-slate-200"><i class="ph ph-info text-sm"></i></div>
+                <div>
+                  <p class="text-sm text-slate-900 font-medium">Annual target raised to 30 points</p>
+                  <p class="text-xs text-slate-400 mt-0.5">2 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden sm:block w-px h-8 bg-slate-200 shrink-0"></div>
+
+        <div class="relative shrink-0">
+          <button id="profile-trigger" class="flex items-center gap-2.5 group">
+            <img src="https://ui-avatars.com/api/?name=Sarah+Ahmad&background=2563eb&color=fff&rounded=true&bold=true" alt="Profile" class="w-10 h-10 rounded-full ring-2 ring-slate-200 group-hover:ring-blue-400 transition-all">
+            <div class="hidden sm:block text-left">
+              <p class="text-sm font-semibold text-slate-900 leading-tight">Sarah Ahmad</p>
+              <p class="text-xs text-slate-500 leading-tight">Senior Advisor</p>
+            </div>
+            <i class="ph ph-caret-down hidden sm:block text-slate-400 text-xs group-hover:text-blue-600 transition-colors"></i>
+          </button>
+
+          <div id="profile-dropdown" data-origin="right" class="dropdown-panel hidden-panel absolute top-full right-0 mt-2 w-48 bg-white border border-slate-200 rounded-xl shadow-lg py-2 z-50">
+            <a href="#" class="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"><i class="ph ph-user-circle text-base"></i> My Profile</a>
+            <a href="#" class="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"><i class="ph ph-gear-six text-base"></i> Settings</a>
+            <div class="h-px bg-slate-100 my-1.5"></div>
+            <a href="#" onclick="handleLogout()" class="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-600 hover:bg-red-50 hover:text-red-600 transition-colors"><i class="ph ph-sign-out text-base"></i> Sign out</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        
+        <div class="mb-8">
+            <h1 id="page-title" class="text-2xl font-bold text-slate-900 tracking-tight">CPD Dashboard</h1>
+            <p id="page-subtitle" class="text-slate-500 mt-1">Track your 2026 requirements and explore the knowledge base.</p>
+        </div>
+
+        
+        <section id="panel-knowledge" class="tab-panel">
+
+         
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-10">
+               
+                <div class="entrance bg-white border border-slate-200 rounded-2xl p-5 shadow-sm lg:col-span-1" style="animation-delay:0ms">
+                    <h2 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4">Upcoming Workshops</h2>
+                    <div class="space-y-3">
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-blue-50/60 transition-colors flex items-center justify-between gap-2 group">
+                            <div class="min-w-0">
+                                <p class="text-xs text-blue-600 font-medium mb-1">Tomorrow, 10:00 AM</p>
+                                <p class="text-sm text-slate-900 font-medium truncate">Q3 Market Outlook</p>
+                            </div>
+                            <button type="button" onclick="toggleReminder(this, 'Q3 Market Outlook')" class="reminder-btn icon-btn w-7 h-7 rounded-md flex items-center justify-center text-slate-400 hover:text-blue-600 hover:bg-white shrink-0" aria-label="Set reminder">
+                                <i class="ph ph-bell text-base"></i>
+                            </button>
+                        </div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-blue-50/60 transition-colors flex items-center justify-between gap-2 group">
+                            <div class="min-w-0">
+                                <p class="text-xs text-blue-600 font-medium mb-1">June 25, 2:00 PM</p>
+                                <p class="text-sm text-slate-900 font-medium truncate">Tax Law Updates</p>
+                            </div>
+                            <button type="button" onclick="toggleReminder(this, 'Tax Law Updates')" class="reminder-btn icon-btn w-7 h-7 rounded-md flex items-center justify-center text-slate-400 hover:text-blue-600 hover:bg-white shrink-0" aria-label="Set reminder">
+                                <i class="ph ph-bell text-base"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="entrance bg-white border border-slate-200 rounded-2xl p-6 shadow-sm lg:col-span-2 flex flex-col justify-center relative overflow-hidden" style="animation-delay:80ms">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full"></div>
+                    <div class="flex justify-between items-end mb-4 relative z-10">
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900">Annual CPD Progress</h2>
+                            <p class="text-sm text-slate-500">Target: 30 Points</p>
+                        </div>
+                        <div class="text-right">
+                            <span id="progress-text" class="text-3xl font-black text-blue-600 tracking-tight">12/30</span>
+                        </div>
+                    </div>
+                    <div class="w-full h-5 bg-slate-100 rounded-full overflow-hidden border border-slate-200 relative z-10">
+                        <div id="progress-bar-fill" class="h-full bg-blue-600 rounded-full w-[40%] relative overflow-hidden"></div>
+                    </div>
+                </div>
+
+                
+                <div class="entrance bg-gradient-to-br from-blue-600 via-blue-600 to-blue-800 rounded-2xl p-6 shadow-lg shadow-blue-600/25 lg:col-span-1 flex flex-col items-center justify-center relative overflow-hidden" style="animation-delay:140ms">
+                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-10 -left-10 w-28 h-28 bg-white/10 rounded-full blur-2xl"></div>
+
+                    <p class="text-blue-100 text-[10px] font-bold uppercase tracking-widest mb-3 relative z-10 flex items-center gap-1.5">
+                        <i class="ph-fill ph-trophy text-sm"></i> Total CPD Points
+                    </p>
+
+                    <div class="relative w-28 h-28 z-10">
+                        <svg class="w-full h-full -rotate-90" viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="10"/>
+                            <circle id="points-ring" cx="60" cy="60" r="50" fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-dasharray="314.159" stroke-dashoffset="188.5"/>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span id="points-badge-text" class="text-3xl font-black text-white leading-none">12</span>
+                            <span class="text-blue-100 text-[10px] font-medium mt-1">of 30 pts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+                <div>
+                    <p class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">Browse</p>
+                    <h3 class="text-2xl font-black text-slate-900 tracking-tight flex flex-wrap items-center gap-2.5">
+                        Course Library
+                        <span id="course-count-badge" class="text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-full align-middle">0 of 6 completed</span>
+                    </h3>
+                </div>
+                <div class="relative w-full sm:w-72 shrink-0">
+                    <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="module-search" placeholder="Search modules..." class="bg-white border border-slate-200 text-sm rounded-lg pl-9 pr-9 py-2.5 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder-slate-400 w-full transition-all shadow-sm">
+                    <button type="button" id="search-clear" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600" aria-label="Clear search">
+                        <i class="ph ph-x-circle text-base"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              
+                <div id="card-risk" onclick="openModal()" class="course-card entrance bg-white border border-blue-500/30 rounded-xl p-6 hover:border-blue-500 cursor-pointer transition-all group relative overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5" style="animation-delay:0ms">
+                    <div id="status-risk" class="absolute top-4 right-4 bg-blue-50 text-blue-600 text-xs px-2 py-1 rounded font-bold border border-blue-100">
+                        +4 Pts
+                    </div>
+                    <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4 border border-blue-100 text-blue-600 group-hover:scale-110 transition-transform">
+                        <i class="ph ph-shield-check text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Risk Management</h4>
+                    <p class="text-sm text-slate-500">Learn to identify and mitigate corporate vulnerabilities in the modern tech sector.</p>
+                    <div class="mt-6 flex items-center text-blue-600 text-sm font-medium">
+                        <span>Open Module</span>
+                        <i class="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <div onclick="handleLockedClick('Wealth Accumulation')" class="course-card entrance bg-slate-50 border border-slate-200 rounded-xl p-6 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-not-allowed relative overflow-hidden shadow-sm" style="animation-delay:60ms">
+                    <div class="absolute top-4 right-4 bg-slate-200 text-slate-500 text-xs px-2 py-1 rounded font-medium"><i class="ph ph-lock mr-1"></i> Locked</div>
+                    <div class="w-10 h-10 rounded-lg bg-slate-200 flex items-center justify-center mb-4 text-slate-500">
+                        <i class="ph ph-chart-line-up text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Wealth Accumulation</h4>
+                    <p class="text-sm text-slate-500">Advanced strategies for high-net-worth portfolio diversification and growth.</p>
+                </div>
+
+                <div onclick="handleLockedClick('Retirement Planning')" class="course-card entrance bg-slate-50 border border-slate-200 rounded-xl p-6 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-not-allowed relative overflow-hidden shadow-sm" style="animation-delay:120ms">
+                    <div class="absolute top-4 right-4 bg-slate-200 text-slate-500 text-xs px-2 py-1 rounded font-medium"><i class="ph ph-lock mr-1"></i> Locked</div>
+                    <div class="w-10 h-10 rounded-lg bg-slate-200 flex items-center justify-center mb-4 text-slate-500">
+                        <i class="ph ph-armchair text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Retirement Planning</h4>
+                    <p class="text-sm text-slate-500">Navigating CPF regulations and structuring private annuities for clients.</p>
+                </div>
+
+               
+                <div onclick="handleLockedClick('Estate Planning')" class="course-card entrance bg-slate-50 border border-slate-200 rounded-xl p-6 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-not-allowed relative overflow-hidden shadow-sm" style="animation-delay:180ms">
+                    <div class="absolute top-4 right-4 bg-slate-200 text-slate-500 text-xs px-2 py-1 rounded font-medium"><i class="ph ph-lock mr-1"></i> Locked</div>
+                    <div class="w-10 h-10 rounded-lg bg-slate-200 flex items-center justify-center mb-4 text-slate-500">
+                        <i class="ph ph-scroll text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Estate Planning</h4>
+                    <p class="text-sm text-slate-500">Fundamentals of will writing, trust formation, and wealth transfer.</p>
+                </div>
+
+                <div onclick="handleLockedClick('Certifications')" class="course-card entrance bg-slate-50 border border-slate-200 rounded-xl p-6 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-not-allowed relative overflow-hidden shadow-sm" style="animation-delay:240ms">
+                    <div class="absolute top-4 right-4 bg-slate-200 text-slate-500 text-xs px-2 py-1 rounded font-medium"><i class="ph ph-lock mr-1"></i> Locked</div>
+                    <div class="w-10 h-10 rounded-lg bg-slate-200 flex items-center justify-center mb-4 text-slate-500">
+                        <i class="ph ph-certificate text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Certifications</h4>
+                    <p class="text-sm text-slate-500">Upload external seminar tickets to claim your manual CPD points.</p>
+                </div>
+
+                
+                <div onclick="handleLockedClick('Level 2 Requirements')" class="course-card entrance bg-slate-50 border border-slate-200 rounded-xl p-6 opacity-75 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-not-allowed relative overflow-hidden shadow-sm" style="animation-delay:300ms">
+                    <div class="absolute top-4 right-4 bg-slate-200 text-slate-500 text-xs px-2 py-1 rounded font-medium"><i class="ph ph-lock mr-1"></i> Locked</div>
+                    <div class="w-10 h-10 rounded-lg bg-slate-200 flex items-center justify-center mb-4 text-slate-500">
+                        <i class="ph ph-briefcase text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Level 2 Requirements</h4>
+                    <p class="text-sm text-slate-500">Corporate advisory prerequisites. Requires Level 1 completion to unlock.</p>
+                </div>
+            </div>
+
+          
+            <div id="no-results" class="hidden text-center py-16">
+                <div class="w-14 h-14 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-4">
+                    <i class="ph ph-magnifying-glass text-2xl"></i>
+                </div>
+                <p class="text-slate-900 font-semibold">No modules match your search</p>
+                <p class="text-sm text-slate-500 mt-1">Try a different keyword, or clear the search to see the full library.</p>
+            </div>
+        </section>
+
+       
+        <section id="panel-announcements" class="tab-panel hidden">
+            <div class="space-y-4 max-w-3xl">
+                <div class="bg-white border-l-4 border-blue-600 border-y border-r border-slate-200 rounded-r-xl p-5 shadow-sm flex gap-4 hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+                        <i class="ph ph-megaphone text-xl"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-start justify-between gap-3 mb-1">
+                            <h4 class="font-bold text-slate-900 text-sm">2026 CPD Requirement Update</h4>
+                            <span class="text-xs text-slate-400 shrink-0">2 days ago</span>
+                        </div>
+                        <p class="text-sm text-slate-600">The annual point requirement has risen to 30 points this cycle, with at least 4 points required in Risk Management. Head to the Knowledge Base to get started.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white border-l-4 border-blue-600 border-y border-r border-slate-200 rounded-r-xl p-5 shadow-sm flex gap-4 hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+                        <i class="ph ph-graduation-cap text-xl"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-start justify-between gap-3 mb-1">
+                            <h4 class="font-bold text-slate-900 text-sm">Wealth Accumulation module — coming soon</h4>
+                            <span class="text-xs text-slate-400 shrink-0">4 days ago</span>
+                        </div>
+                        <p class="text-sm text-slate-600">Our next module unlocks once Risk Management is complete. Finish your current module to be first in line.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white border-l-4 border-slate-300 border-y border-r border-slate-200 rounded-r-xl p-5 shadow-sm flex gap-4 hover:shadow-md transition-shadow">
+                    <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 border border-slate-200">
+                        <i class="ph ph-buildings text-xl"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-start justify-between gap-3 mb-1">
+                            <h4 class="font-bold text-slate-900 text-sm">Office closed for the public holiday</h4>
+                            <span class="text-xs text-slate-400 shrink-0">1 week ago</span>
+                        </div>
+                        <p class="text-sm text-slate-600">The Petaling Jaya office will be closed. Workshop schedules resume the following business day as normal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="panel-followups" class="tab-panel hidden">
+            <div class="flex items-center justify-between mb-5 max-w-3xl">
+                <p class="text-sm text-slate-500"><span id="followup-remaining" class="font-semibold text-slate-900">4</span> client touchpoints due this week</p>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-2xl divide-y divide-slate-100 shadow-sm max-w-3xl overflow-hidden">
+
+                <div class="followup-item p-4 flex items-center gap-3.5 hover:bg-slate-50 transition-colors">
+                    <button type="button" onclick="toggleFollowup(this)" class="followup-check icon-btn w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center shrink-0 hover:border-blue-500">
+                        <i class="ph-bold ph-check text-[10px] text-white opacity-0"></i>
+                    </button>
+                    <div class="flex-1 min-w-0">
+                        <p class="followup-text text-sm font-medium text-slate-900">Review portfolio allocation — annual check-in</p>
+                        <p class="text-xs text-slate-400">Client J.T. • Due in 2 days</p>
+                    </div>
+                </div>
+
+                <div class="followup-item p-4 flex items-center gap-3.5 hover:bg-slate-50 transition-colors">
+                    <button type="button" onclick="toggleFollowup(this)" class="followup-check icon-btn w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center shrink-0 hover:border-blue-500">
+                        <i class="ph-bold ph-check text-[10px] text-white opacity-0"></i>
+                    </button>
+                    <div class="flex-1 min-w-0">
+                        <p class="followup-text text-sm font-medium text-slate-900">Confirm beneficiary details after policy update</p>
+                        <p class="text-xs text-slate-400">Client R.K. • Due in 3 days</p>
+                    </div>
+                </div>
+
+                <div class="followup-item p-4 flex items-center gap-3.5 hover:bg-slate-50 transition-colors">
+                    <button type="button" onclick="toggleFollowup(this)" class="followup-check icon-btn w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center shrink-0 hover:border-blue-500">
+                        <i class="ph-bold ph-check text-[10px] text-white opacity-0"></i>
+                    </button>
+                    <div class="flex-1 min-w-0">
+                        <p class="followup-text text-sm font-medium text-slate-900">Send Q2 performance summary</p>
+                        <p class="text-xs text-slate-400">Client A.L. • Due in 4 days</p>
+                    </div>
+                </div>
+
+                <div class="followup-item p-4 flex items-center gap-3.5 hover:bg-slate-50 transition-colors">
+                    <button type="button" onclick="toggleFollowup(this)" class="followup-check icon-btn w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center shrink-0 hover:border-blue-500">
+                        <i class="ph-bold ph-check text-[10px] text-white opacity-0"></i>
+                    </button>
+                    <div class="flex-1 min-w-0">
+                        <p class="followup-text text-sm font-medium text-slate-900">Schedule retirement planning intro call</p>
+                        <p class="text-xs text-slate-400">Client M.S. • Due next week</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <div id="course-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 invisible">
+        <div class="modal-content bg-white border border-slate-200 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+          
+            <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+                        <i class="ph ph-shield-check text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Risk Management</h3>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-900 transition-colors p-1 rounded-md hover:bg-slate-200">
+                    <i class="ph ph-x text-xl"></i>
+                </button>
+            </div>
+
+          
+            <div class="p-6 overflow-y-auto">
+              
+                <div class="w-full aspect-video bg-slate-100 rounded-xl border border-slate-200 mb-6 flex flex-col items-center justify-center relative group">
+                    <img src="https://placehold.co/800x450/f8fafc/475569?text=Corporate+Risk+Webinar" alt="Video Placeholder" class="absolute inset-0 w-full h-full object-cover rounded-xl opacity-90">
+                    <button class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white z-10 hover:scale-110 transition-transform shadow-lg shadow-blue-600/30">
+                        <i class="ph-fill ph-play text-2xl ml-1"></i>
+                    </button>
+                    <p class="z-10 mt-4 text-sm text-slate-600 font-medium bg-white/80 px-3 py-1 rounded-full backdrop-blur-sm">Click to watch 15-minute briefing</p>
+                </div>
+
+                <h4 class="text-slate-900 font-semibold mb-2">Module Overview</h4>
+                <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+                    In this session, we cover the 2026 updates to corporate risk structures. You will learn how to identify gaps in a client's keyman insurance policy and how to structure comprehensive liability coverage for tech startups.
+                </p>
+
+                <div class="bg-blue-50 rounded-lg p-4 border border-blue-100 flex items-start gap-3">
+                    <i class="ph ph-info text-blue-600 text-lg mt-0.5"></i>
+                    <div>
+                        <p class="text-sm font-medium text-slate-900">Completion Requirements</p>
+                        <p class="text-xs text-slate-600 mt-1">Watch the video above and click the completion button below to claim your CPD points.</p>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex justify-end gap-3">
+                <button onclick="closeModal()" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-200 transition-colors">
+                    Cancel
+                </button>
+                <button id="complete-btn" onclick="completeFirstCourse()" class="px-5 py-2 rounded-lg text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white transition-colors flex items-center gap-2 shadow-lg shadow-blue-600/20">
+                    <i class="ph ph-check-circle"></i>
+                    Complete Module (+4 Pts)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3"></div>
+
+  
+    <script src="../js/nav.js"></script>
+    <script src="../js/learning.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAG Advisory - Expense Management</title>
+
+    <link rel="icon" href="../CapslockLogo.png" type="png">
+
+   
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+   
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="../css/expenses.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col relative">
+
+
+<nav class="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16 gap-3">
+
+      
+      <a href="../index.html" class="flex items-center gap-2 shrink-0 group z-10">
+        <img src="../CapslockLogo.png" alt="CapsLock logo"
+             onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=AAG&background=2563eb&color=fff&rounded=true&bold=true';"
+             class="h-9 w-9 object-contain group-hover:scale-105 transition-transform">
+             <span class="text-base font-bold text-slate-900 tracking-tight" style="margin-left: -10px;">ap<span class="text-blue-600">Sight</span></span>
+      </a>
+
+      
+      <div class="hidden md:flex flex-1 justify-center">
+        <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
+          <a href="../index.html" class="app-nav-link app-nav-idle">
+            <i class="ph ph-house"></i><span>Home</span>
+          </a>
+          <a href="learning.html" class="app-nav-link app-nav-idle">
+            <i class="ph ph-graduation-cap"></i><span>Learning</span>
+          </a>
+          <a href="leaderboard.html" class="app-nav-link app-nav-idle">
+            <i class="ph ph-users-three"></i><span>Referrals</span>
+          </a>
+          <a href="expenses.html" class="app-nav-link app-nav-active">
+            <i class="ph ph-receipt"></i><span>Expenses</span>
+          </a>
+          <a href="ai-listener.html" class="app-nav-link app-nav-idle">
+            <i class="ph ph-ear-slash"></i><span>AI Listener</span>
+          </a>
+        </div>
+      </div>
+
+      
+        <div class="flex items-center gap-1 shrink-0 z-10">
+        <div class="relative">
+          <button id="bell-trigger" class="icon-btn relative w-10 h-10 rounded-lg flex items-center justify-center text-slate-500 hover:text-blue-600 hover:bg-blue-50">
+            <i class="ph ph-bell text-xl"></i>
+            <span id="bell-dot" class="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full ring-2 ring-white"></span>
+          </button>
+
+          <div id="bell-dropdown" class="dropdown-panel hidden-panel absolute top-full right-0 mt-2 w-80 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden z-50">
+            <div class="px-4 py-3 border-b border-slate-100 bg-slate-50 flex items-center justify-between">
+              <p class="text-sm font-bold text-slate-900">Notifications</p>
+              <span class="text-xs text-blue-600 font-medium">2 new</span>
+            </div>
+            <div class="max-h-72 overflow-y-auto divide-y divide-slate-100">
+              <div class="px-4 py-3 flex gap-3 hover:bg-slate-50 transition-colors">
+                <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100"><i class="ph ph-trophy text-sm"></i></div>
+                <div>
+                  <p class="text-sm text-slate-900 font-medium">Risk Management module unlocked</p>
+                  <p class="text-xs text-slate-400 mt-0.5">Just now</p>
+                </div>
+              </div>
+              <div class="px-4 py-3 flex gap-3 hover:bg-slate-50 transition-colors">
+                <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100"><i class="ph ph-calendar-check text-sm"></i></div>
+                <div>
+                  <p class="text-sm text-slate-900 font-medium">Q3 Market Outlook starts tomorrow</p>
+                  <p class="text-xs text-slate-400 mt-0.5">3 hours ago</p>
+                </div>
+              </div>
+              <div class="px-4 py-3 flex gap-3 hover:bg-slate-50 transition-colors">
+                <div class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 border border-slate-200"><i class="ph ph-info text-sm"></i></div>
+                <div>
+                  <p class="text-sm text-slate-900 font-medium">Annual target raised to 30 points</p>
+                  <p class="text-xs text-slate-400 mt-0.5">2 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden sm:block w-px h-8 bg-slate-200 shrink-0"></div>
+
+        <div class="relative shrink-0">
+          <button id="profile-trigger" class="flex items-center gap-2.5 group">
+            <img src="https://ui-avatars.com/api/?name=Sarah+Ahmad&background=2563eb&color=fff&rounded=true&bold=true" alt="Profile" class="w-10 h-10 rounded-full ring-2 ring-slate-200 group-hover:ring-blue-400 transition-all">
+            <div class="hidden sm:block text-left">
+              <p class="text-sm font-semibold text-slate-900 leading-tight">Sarah Ahmad</p>
+              <p class="text-xs text-slate-500 leading-tight">Senior Advisor</p>
+            </div>
+            <i class="ph ph-caret-down hidden sm:block text-slate-400 text-xs group-hover:text-blue-600 transition-colors"></i>
+          </button>
+
+          <div id="profile-dropdown" data-origin="right" class="dropdown-panel hidden-panel absolute top-full right-0 mt-2 w-48 bg-white border border-slate-200 rounded-xl shadow-lg py-2 z-50">
+            <a href="#" class="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"><i class="ph ph-user-circle text-base"></i> My Profile</a>
+            <a href="#" class="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"><i class="ph ph-gear-six text-base"></i> Settings</a>
+            <div class="h-px bg-slate-100 my-1.5"></div>
+            <a href="#" onclick="handleLogout()" class="flex items-center gap-2.5 px-4 py-2 text-sm text-slate-600 hover:bg-red-50 hover:text-red-600 transition-colors"><i class="ph ph-sign-out text-base"></i> Sign out</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+       
+        <div class="mb-8">
+            <p class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">Finance</p>
+            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Expense Management</h1>
+            <p class="text-slate-500 mt-1">Track, categorise, and audit your advisory practice spend.</p>
+        </div>
+
+      
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+
+            
+            <div class="entrance bg-white border border-slate-200 rounded-2xl p-6 shadow-sm relative overflow-hidden" style="animation-delay:0ms">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-11 h-11 rounded-xl bg-slate-900 flex items-center justify-center text-white">
+                        <i class="ph-fill ph-fire text-xl"></i>
+                    </div>
+                    <span class="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-1 rounded-full">
+                        <i class="ph-bold ph-trend-up"></i> +2.4% vs last month
+                    </span>
+                </div>
+                <p class="text-sm font-medium text-slate-500">Total Monthly Burn</p>
+                <p class="text-3xl font-black text-slate-900 tracking-tight mt-1">RM <span id="hero-burn">14,250.00</span></p>
+                <p class="text-xs text-slate-400 mt-3">Across <span id="hero-txn-count" class="font-semibold text-slate-600">0</span> transactions this month</p>
+            </div>
+
+            
+            <div class="entrance bg-white border border-slate-200 rounded-2xl p-6 shadow-sm relative overflow-hidden" style="animation-delay:80ms">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 border border-blue-100">
+                        <i class="ph-fill ph-gauge text-xl"></i>
+                    </div>
+                    <span id="budget-status-pill" class="inline-flex items-center gap-1 text-xs font-bold text-amber-700 bg-amber-50 border border-amber-100 px-2 py-1 rounded-full">
+                        <i class="ph-bold ph-warning"></i> Monitor
+                    </span>
+                </div>
+                <div class="flex items-end justify-between mb-3">
+                    <p class="text-sm font-medium text-slate-500">Operational Budget</p>
+                    <p class="text-sm font-bold text-slate-900"><span id="hero-budget-pct">68</span>%</p>
+                </div>
+                <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                    <div id="hero-budget-bar" class="h-full rounded-full transition-all duration-700" style="width:68%; background: linear-gradient(90deg, #3b82f6, #2563eb);"></div>
+                </div>
+                <p class="text-xs text-slate-400 mt-3">RM <span id="hero-budget-used">14,250</span> of RM <span id="hero-budget-cap">21,000</span> used</p>
+            </div>
+
+            <div class="entrance bg-gradient-to-br from-emerald-500 via-emerald-600 to-emerald-700 rounded-2xl p-6 shadow-lg shadow-emerald-600/25 relative overflow-hidden" style="animation-delay:140ms">
+                <div class="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-28 h-28 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="relative z-10">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center text-white border border-white/20">
+                            <i class="ph-fill ph-shield-check text-xl"></i>
+                        </div>
+                        <span class="inline-flex items-center gap-1 text-xs font-bold text-emerald-50 bg-white/15 border border-white/20 px-2 py-1 rounded-full">
+                            Q2 2026
+                        </span>
+                    </div>
+                    <p class="text-emerald-50 text-sm font-medium">Claimable Total</p>
+                    <p class="text-3xl font-black text-white tracking-tight mt-1">RM <span id="hero-tax">0.00</span></p>
+                    <p class="text-emerald-100/80 text-xs mt-3">Accrued write-offs this fiscal quarter</p>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+
+       
+            <section class="lg:col-span-2 entrance bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden" style="animation-delay:180ms">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+                        <i class="ph ph-plus-circle text-xl"></i>
+                    </div>
+                    <h2 class="text-base font-bold text-slate-900">Log New Expense</h2>
+                </div>
+
+                <form id="expense-form" class="p-6 space-y-5">
+
+                   
+                    <div>
+                        <label for="exp-date" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Date</label>
+                        <div class="relative">
+                            <i class="ph ph-calendar-blank absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                            <input type="date" id="exp-date" class="exp-input pl-9" required>
+                        </div>
+                    </div>
+
+                  
+                    <div>
+                        <label for="exp-vendor" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Vendor / Merchant</label>
+                        <div class="relative">
+                            <i class="ph ph-storefront absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                            <input type="text" id="exp-vendor" placeholder="Enter vendor name..." class="exp-input pl-9" required>
+                        </div>
+                    </div>
+
+                   
+                    <div>
+                        <label for="exp-amount" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Amount</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 pointer-events-none">MYR</span>
+                            <input type="number" id="exp-amount" step="0.01" min="0" placeholder="0.00" class="exp-input pl-14 text-right font-bold text-lg" required>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <label for="exp-category" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Category</label>
+                        <div class="relative">
+                            <i class="ph ph-tag absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10"></i>
+                            <select id="exp-category" class="exp-input pl-9 appearance-none pr-9" required>
+                                <option value="" disabled selected>Select a category...</option>
+                                <optgroup label="Fixed Overhead">
+                                    <option value="CRM & AI Tools">CRM &amp; AI Tools</option>
+                                    <option value="Compliance Licensing">Compliance Licensing</option>
+                                    <option value="Office Rent">Office Rent</option>
+                                    <option value="Software">Software</option>
+                                </optgroup>
+                                <optgroup label="Variable">
+                                    <option value="Client Meals">Client Meals</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Office Supplies">Office Supplies</option>
+                                </optgroup>
+                            </select>
+                            <i class="ph ph-caret-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    
+                    <div>
+                        <label for="exp-payment" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Payment Method</label>
+                        <div class="relative">
+                            <i class="ph ph-credit-card absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none z-10"></i>
+                            <select id="exp-payment" class="exp-input pl-9 appearance-none pr-9" required>
+                                <option value="" disabled selected>Select method...</option>
+                                <option value="Corporate Amex">Corporate Amex</option>
+                                <option value="Operating Account">Operating Account</option>
+                                <option value="Personal Reimbursable">Personal Reimbursable</option>
+                            </select>
+                            <i class="ph ph-caret-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Receipt</label>
+                        <div id="drop-zone" class="drop-zone">
+                            <input type="file" id="exp-receipt" class="hidden" accept="image/*,application/pdf">
+                            <i class="ph ph-upload-simple text-2xl text-slate-400 mb-2"></i>
+                            <p class="text-sm font-medium text-slate-600" id="drop-text">Drop receipt PDF or image here</p>
+                            <p class="text-xs text-slate-400 mt-1">or click to browse</p>
+                            <span id="receipt-name" class="hidden mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2.5 py-1 rounded-full">
+                                <i class="ph-fill ph-check-circle"></i> <span id="receipt-file-label">receipt.pdf</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="ph-bold ph-check-circle text-lg"></i>
+                        Log Transaction
+                    </button>
+                </form>
+            </section>
+
+            <section class="lg:col-span-3 entrance bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden" style="animation-delay:240ms">
+                <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+                            <i class="ph ph-book-open text-xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h2 class="text-base font-bold text-slate-900 truncate">Audit Ledger</h2>
+                            <p class="text-xs text-slate-400">Recent transactions &middot; compliance-ready</p>
+                        </div>
+                    </div>
+                    <div class="relative w-40 sm:w-56 shrink-0">
+                        <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="ledger-search" placeholder="Search ledger..." class="bg-white border border-slate-200 text-sm rounded-lg pl-9 pr-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-slate-900 placeholder-slate-400 w-full transition-all shadow-sm">
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="ledger-table w-full">
+                        <thead>
+                            <tr>
+                                <th class="text-left">Date</th>
+                                <th class="text-left">Category</th>
+                                <th class="text-left">Vendor</th>
+                                <th class="text-right">Amount</th>
+                                <th class="text-center">Receipt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ledger-body">
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="ledger-empty" class="hidden px-6 py-12 text-center">
+                    <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                        <i class="ph ph-invoice text-2xl"></i>
+                    </div>
+                    <p class="text-slate-900 font-semibold text-sm">No transactions found</p>
+                    <p class="text-sm text-slate-500 mt-1">Log an expense on the left, or adjust your search.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+   
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3"></div>
+
+     <script src="../js/nav.js"></script>
+    <script src="../js/expenses.js"></script>
+</body>
+</html>
